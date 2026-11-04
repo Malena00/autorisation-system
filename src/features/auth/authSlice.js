@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isAuthenticated: false,
-    phone: null,
+    phone: '+7 999 999-99-99',
+    password: '1234567890',
     rememberMe: false,
 };
 
@@ -16,9 +17,12 @@ const authSlice = createSlice({
             state.rememberMe = action.payload.rememberMe;
         },
 
+        passwordUpdated: (state, action) => {
+            state.password = action.payload;
+        },
+
         logout: (state) => {
             state.isAuthenticated = false;
-            state.phone = null;
             state.rememberMe = false;
         },
     },
