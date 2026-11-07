@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { loginSuccess } from '../features/auth/authSlice';
 
 const CORRECT_PHONE = '+7 999 999-99-99';
-const CORRECT_PASSWORD = '1234567890';
 
 export default function LoginPage() {
     const dispatch = useDispatch();
@@ -16,13 +15,15 @@ export default function LoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState('');
 
+    const currentPassword = useSelector((state) => state.auth.password);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setError('');
 
         const normalizedPhone = phone.trim().replace(/\s+/g, ' ');
 
-        if (normalizedPhone === CORRECT_PHONE && password === CORRECT_PASSWORD) {
+        if (normalizedPhone === CORRECT_PHONE && password === currentPassword) {
             dispatch(loginSuccess({
                 phone: normalizedPhone,
                 rememberMe,
