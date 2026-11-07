@@ -7,9 +7,9 @@ import {
     codeVerified,
     setRecoveryError,
     resetRecovery,
-} from '../features/recovery/recoverySlice';
+} from '../../features/recovery/recoverySlice';
 
-import { passwordUpdated } from '../features/auth/authSlice';
+import { passwordUpdated } from '../../features/auth/authSlice';
 
 const CORRECT_PHONE = '+7 999 999-99-99';
 const SMS_CODE = '5555';
