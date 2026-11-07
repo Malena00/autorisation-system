@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loginSuccess } from '../features/auth/authSlice';
+import { loginSuccess } from '../../features/auth/authSlice';
+import './LoginPage.scss';
 
 const CORRECT_PHONE = '+7 999 999-99-99';
 
