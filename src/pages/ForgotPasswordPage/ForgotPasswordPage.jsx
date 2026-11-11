@@ -2,6 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
+import './ForgotPasswordPage.scss'
+
 import {
     phoneSubmitted,
     codeVerified,
@@ -191,7 +193,7 @@ export default function ForgotPasswordPage() {
                         to="/register"
                         onClick={() => dispatch(resetRecovery())}
                     >
-                        Вспомнил пароль!
+                        Регистрация
                     </Link>
                 </div>
             </section>
