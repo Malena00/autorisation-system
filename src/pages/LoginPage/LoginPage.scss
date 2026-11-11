@@ -5,7 +5,9 @@
   @include flex-center;
 
   min-height: 100vh;
-  padding: 20px;
+  padding: $spacing-md;
+
+  background: $background-color;
 
   .auth-card {
     @include card;
@@ -14,49 +16,22 @@
     max-width: 400px;
 
     h1 {
-      margin-bottom: 24px;
+      margin-bottom: $spacing-lg;
       text-align: center;
     }
   }
 }
 
 .form-group {
-  margin-bottom: 18px;
-
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-
-  input {
-    width: 100%;
-    height: $input-height;
-    padding: 0 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-
-    &:focus {
-      outline: 2px solid $primary-color;
-      border-color: $primary-color;
-    }
-  }
+  @include form-group;
 }
 
 .submit-button {
-  width: 100%;
-  padding: 12px;
-  color: $white;
-  background: $primary-color;
-  border: none;
-  border-radius: 6px;
-
-  &:hover {
-    background: $primary-hover;
-  }
+  @include button-primary;
 }
 
 .error-message {
-  margin-bottom: 16px;
-  color: $error-color;
+  @include error-text;
+
+  margin-bottom: $spacing-md;
 }
