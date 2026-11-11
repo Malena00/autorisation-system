@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginSuccess } from '../../features/auth/authSlice';
 import './LoginPage.scss';
 
-const CORRECT_PHONE = '+7 999 999-99-99';
-
 export default function LoginPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -16,23 +14,23 @@ export default function LoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState('');
 
-    const currentPassword = useSelector((state) => state.auth.password);
+    const { phone: registeredPhone, password: currentPassword } = useSelector((state) => state.auth);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setError('');
 
-        const normalizedPhone = phone.trim().replace(/\s+/g, ' ');
-
-        if (normalizedPhone === CORRECT_PHONE && password === currentPassword) {
+        if (phone.trim().replace(/\s+/g, ' ') === registeredPhone && password === currentPassword) {
             dispatch(loginSuccess({
-                phone: normalizedPhone,
+                phone: registeredPhone,
                 rememberMe,
                 })
             );
 
-            navigate('/profile', { replace: true });
-            return;
+            navigate('/profile');
+        }
+        else {
+            setError('Неверный телефон или пароль.')
         }
 
         setError('Неверный телефон или пароль.');
