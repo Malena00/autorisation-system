@@ -6,12 +6,37 @@ $text-color: #1f2937;
 $secondary-text-color: #6b7280;
 
 $error-color: #dc2626;
+$success-color: #16a34a;
+
 $background-color: #f3f4f6;
 $white: #ffffff;
+$border-color: #d1d5db;
 
-// Размеры
+// Размеры и отступы
 $border-radius: 12px;
 $input-height: 44px;
 
-// Тени
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Карточки
 $card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$card-padding: 32px;
+$card-border-radius: 12px;
+
+// Формы и поля
+$input-height: 44px;
+$input-padding: 12px;
+$input-border-radius: 8px;
+$input-focus-color: $primary-color;
+
+// Кнопки
+$button-height: 44px;
+$button-border-radius: 8px;
+
+// Адаптивность
+$mobile-breakpoint: 600px;
+$tablet-breakpoint: 900px;
