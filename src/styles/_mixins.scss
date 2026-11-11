@@ -1,23 +1,92 @@
 @use './variables' as *;
 
-// Центрирование содержимого
+// Центрирование контента по центру экрана (для страниц)
 @mixin flex-center {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+// Центрирование содержимого формы
+@mixin center-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
 }
 
 // Стиль карточки
 @mixin card {
+  padding: $spacing-xl;
+
   background: $white;
   border-radius: $border-radius;
   box-shadow: $card-shadow;
-  padding: 32px;
 }
 
 // Адаптивность
 @mixin mobile {
-  @media (max-width: 600px) {
+  @media (max-width: $mobile-breakpoint) {
     @content;
   }
+}
+
+// Группа полей формы (label + input + error)
+@mixin form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+
+    font-weight: 600;
+  }
+
+  // Стили ко всем, кроме file
+  input:not([type='file']) {
+    width: 100%;
+    height: $input-height;
+    padding: 0 $input-padding;
+
+    border: 1px solid $border-color;
+    border-radius: $input-border-radius;
+
+    transition: border-color 0.2s, outline 0.2s;
+
+    &:focus {
+      outline: 2px solid $input-focus-color;
+      border-color: $input-focus-color;
+    }
+  }
+}
+
+// Основная кнопка (submit)
+@mixin button-primary {
+  width: 100%;
+  height: $button-height;
+
+  color: $white;
+  background: $primary-color;
+
+  border: none;
+  border-radius: $button-border-radius;
+
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: $primary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+}
+
+// Текст ошибки 
+@mixin error-text {
+  margin-top: $spacing-xs;
+  font-size: 13px;
+  
+  color: $error-color;
 }
