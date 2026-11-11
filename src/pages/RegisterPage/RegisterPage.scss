@@ -5,46 +5,27 @@
   @include flex-center;
 
   min-height: 100vh;
-  padding: 20px;
+  padding: $spacing-md;
   background: $background-color;
 
   .register-card {
+    @include card;
+
     width: 100%;
     max-width: 430px;
-    padding: 32px;
-    background: $white;
-    border-radius: $border-radius;
-    box-shadow: $card-shadow;
 
     h1 {
-      margin-bottom: 24px;
-      color: $text-color;
+      margin-bottom: $spacing-lg;
       text-align: center;
+
+      color: $text-color;
     }
   }
 
   .form-group {
-    margin-bottom: 18px;
+    @include form-group;
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    input:not([type='file']) {
-      width: 100%;
-      height: $input-height;
-      padding: 0 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-
-      &:focus {
-        outline: 2px solid $primary-color;
-        border-color: $primary-color;
-      }
-    }
-
+    // Стилизация для файла
     input[type='file'] {
       width: 100%;
       font-size: 14px;
@@ -52,38 +33,27 @@
   }
 
   .error-message {
-    margin-top: 6px;
-    color: $error-color;
-    font-size: 13px;
+    @include error-text;
   }
 
   .avatar-preview {
     display: block;
     width: 100px;
     height: 100px;
-    margin-top: 12px;
+    margin-top: $spacing-sm;
     border-radius: 50%;
     object-fit: cover;
   }
 
   .submit-button {
-    width: 100%;
-    padding: 12px;
-    color: $white;
-    background: $primary-color;
-    border: none;
-    border-radius: 6px;
-    transition: background 0.2s;
-
-    &:hover {
-      background: $primary-hover;
-    }
+    @include button-primary;
   }
 
   .register-login-link {
-    margin-top: 20px;
-    color: $secondary-text-color;
+    margin-top: $spacing-lg;
     text-align: center;
+
+    color: $secondary-text-color;
 
     a {
       color: $primary-color;
@@ -93,7 +63,7 @@
 
   @include mobile {
     .register-card {
-      padding: 24px 18px;
+      padding: $spacing-lg $spacing-md;
     }
   }
 }
