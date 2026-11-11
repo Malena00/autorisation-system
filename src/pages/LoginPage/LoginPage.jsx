@@ -75,10 +75,12 @@ export default function LoginPage() {
                             />
                             Запомнить меня
                         </label>
-                        <Link to="/forgot-password">
-                            Забыли пароль?
-                        </Link>
                     </div>
+                    
+                    <Link to="/forgot-password">
+                        Забыли пароль?
+                    </Link>
+
                     {error && (
                         <p className="error-message" role="alert">
                             {error}
