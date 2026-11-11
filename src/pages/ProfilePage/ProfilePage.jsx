@@ -7,8 +7,9 @@ export default function ProfilePage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const phone = useSelector((state) => state.auth.phone);
-    const rememberMe = useSelector((state) => state.auth.rememberMe);
+    const { name, phone, avatar } = useSelector(
+        (state) => state.auth
+    );
 
     const handleLogout = () => {
         dispatch(logout());
@@ -20,22 +21,14 @@ export default function ProfilePage() {
             <section className="profile-card">
                 <div className="profile-icon">👤</div>
                 <h1>Личный кабинет</h1>
-                <p className="profile-description">
-                    Вы успешно авторизовались!
-                </p>
+                
+                {avatar && (
+                    <img className="profile-avatar" src={avatar} alt="Аватар пользователя" />
+                )}
 
-                <div className="profile-info">
-                    <p>
-                        <strong>Телефон:</strong> {phone}
-                    </p>
-                    <p>
-                        <strong>Статус:</strong> Авторизован
-                    </p>
-                    <p>
-                        <strong>Запомнить меня:</strong>{' '}
-                        {rememberMe ? 'Да' : 'Нет'}
-                    </p>
-                </div>
+                <p>Имя: {name}</p>
+                <p>Телефон: {phone}</p>
+
                 <button type="button" className="submit-button" onClick={handleLogout}>Выйти</button>
             </section>
         </main>
