@@ -1,7 +1,53 @@
-.profile-avatar {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.profile-page {
+    @include flex-center;
+
+    min-height: 100vh;
+    padding: $spacing-md;
+
+    background: $background-color;
+
+    .profile-card {
+        @include card;
+
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+
+        .profile-icon {
+            font-size: 48px;
+            margin-bottom: $spacing-sm;
+        }
+
+        h1 {
+            margin-bottom: $spacing-lg;
+            font-size: 22px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            display: block;
+            margin: 0 auto $spacing-lg;
+
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid $border-color;
+        }
+
+        p {
+            margin-bottom: $spacing-sm;
+            font-size: 16px;
+
+            color: $text-color;
+        }
+
+        .submit-button {
+            @include button-primary;
+
+            margin-top: $spacing-lg;
+        }
+    }
 }
