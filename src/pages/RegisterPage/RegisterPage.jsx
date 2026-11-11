@@ -59,7 +59,7 @@ function RegisterPage() {
             newErrors.name = 'Имя должно содержать минимум 2 символа.'
         }
 
-        const normalizedPhone = phone.replace(/\s/g, '');
+        const normalizedPhone = phone.replace(/[^\d+]/g, '');
 
         if (!normalizedPhone) {
             newErrors.phone = 'Введите номер телефона.';
@@ -81,25 +81,40 @@ function RegisterPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        console.log('Форма отправлена.')
+
         const validationErrors = validateForm();
+
+        setErrors((prev) => ({
+            ...prev,
+            ...validationErrors,
+        }));
 
         if (Object.values(errors).some(Boolean)) {
             return;
         }
 
         if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
+            console.log('Ошибки формы:', validationErrors)
+            // setErrors(validationErrors);
+            return;
+        }
+
+        if (errors.avatar) {
+            console.log('Ошибка аватара:', errors.avatar);
             return;
         }
 
         dispatch(
             registerSuccess({
                 name: name.trim(),
-                phone: phone.replace(/\s/g, ''),
+                phone: phone.replace(/[^\d+]/g, ''),
                 password,
                 avatar,
             })
         );
+
+        console.log('Регистрация успешна.')
 
         navigate('/profile', { replace: true });
     };
